@@ -22,30 +22,60 @@ public class StatsServiceTest {
         StatsService service = new StatsService();
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expected = ((8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18) / 12);
+        int expected = (8 + 15 + 13 + 15 + 17 + 20 + 19 + 20 + 7 + 14 + 14 + 18) / 12;
         int actual = service.averageSales(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void testMaxSalesMonth() {                 // месяц в котором был пик продаж
+    public void testMonthMaximumSale() {                 // месяц в котором был пик продаж
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        long expected = 7;
-        long actual = service.maxSales(sales);
+        long expected = 8;
+        long actual = service.monthMaximumSale(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
-
     @Test
-public void testMinSaleMonth() {
+    public void testMinSaleMonth() {                        //месяц минимальных продаж
         StatsService service = new StatsService();
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
+        long expected = 9;
+        long actual = service.minSales(sales);
+
+        Assertions.assertEquals(expected, actual);
 
     }
+
+
+    @Test
+    public void testMonthSaleBelowAverage() {               // кол-во месяцев в которых продажи были ниже среднего
+        StatsService service = new StatsService();
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+
+
+        int expected = 5;
+        int actual = service.monthsSalesBelowAverage(sales);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testMonthSaleAboveAverage() {               // кол-во месяцев в которых продажи были выше среднего
+        StatsService service = new StatsService();
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+
+
+        int expected = 5;
+        int actual = service.monthsSalesBelowAverage(sales);
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
+
 
 
